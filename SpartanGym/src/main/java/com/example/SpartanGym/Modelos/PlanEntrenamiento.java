@@ -13,17 +13,19 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @AllArgsConstructor
 public class PlanEntrenamiento {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Que esto se auto incremente
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false) // no permite campo nulo
     private String nombre;
 
     private String descripcion;
     private Integer duracionSemanas;
     private Double precio;
-
+//Relación Uno a Muchos (Un plan contiene muchos miembros).
     @OneToMany(mappedBy = "plan", cascade = CascadeType.ALL)
+   //
     @JsonIgnore
+    //evita un bucle infinito (recursividad) al generar la respuesta JSON en Postman.
     private List<Miembro> miembros;
 }

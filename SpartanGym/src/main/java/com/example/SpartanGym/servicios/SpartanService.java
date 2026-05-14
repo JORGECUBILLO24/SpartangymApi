@@ -16,24 +16,24 @@ public class SpartanService {
     @Autowired
     private PlanRepository planRepo;
 
-    // Métodos para Planes
+    // Métodos para Planes retorna todos los planes
     public List<PlanEntrenamiento> obtenerTodosLosPlanes() {
         return planRepo.findAll();
     }
-
+//metodo para guardar todos los planes
     public PlanEntrenamiento guardarPlan(PlanEntrenamiento plan) {
         return planRepo.save(plan);
     }
 
-    // Métodos para Miembros
+    // Métodos para Miembros retorna a todos
     public List<Miembro> obtenerTodosLosMiembros() {
         return miembroRepo.findAll();
     }
-
+  // guarda los miembros
     public Miembro guardarMiembro(Miembro miembro) {
         return miembroRepo.save(miembro);
     }
-
+  //para eliminar los miembros
     public void eliminarMiembro(Long id) {
         miembroRepo.deleteById(id);
     }
